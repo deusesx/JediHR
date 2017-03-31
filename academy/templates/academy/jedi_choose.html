@@ -1,0 +1,10 @@
+{% extends 'academy/base.html' %}
+{% block title %}Вход для джедаев{% endblock %}
+{% block article %}
+<h2>Приветствуем тебя, джедай!</h2>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Войти" />
+</form>
+
+{% endblock %}

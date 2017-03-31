@@ -1,0 +1,30 @@
+{% extends 'academy/base.html' %}
+{% block title %}Испытание{% endblock %}
+
+{% block article %}
+
+<h2>Испытание для кандидата {{ test.candidate.name }}</h2>
+
+
+<form method="POST">
+    {% csrf_token %}
+    {{ answers.management_form }}
+    <fieldset>
+        <legend>Тестовое испытание кандидата {{ test.candidate.name }}</legend>
+    {% for form in answers %}
+    <p>
+        {{ form.instance.question.text }}
+    </p>
+    <p>
+        {{ form.id }}
+    </p>
+    <p>
+        {{ form.answer }}
+    </p>
+
+    {% endfor %}
+    <input type="submit" value="Сохранить ответы" />
+    </fieldset>
+</form>
+
+{% endblock %}

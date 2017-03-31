@@ -1,0 +1,25 @@
+{% extends 'academy/base.html' %}
+
+{% block title %}Ответы кандидата {{ candidate.name }}{% endblock %}
+{% block article %}
+    <h2>Ответы кандидата {{ candidate.name }}</h2>
+
+    <p>
+    {% for answer in answers %}
+        <i>Вопрос: </i><b>{{ answer.question.text }}</b>
+        <br/>
+        <i>Верный ответ: </i>{{ answer.question.right_answer }}
+        <br />
+
+        <i>Ответ кандидата: </i> {{ answer.answer }}
+        <br />
+    {% endfor %}
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Зачислить">
+        <button><a href="/planet/{{ candidate.planet_id }}/candidates/?is_padavan=False&passed=True">Назад</a></button>
+    </form>
+{% endblock %}

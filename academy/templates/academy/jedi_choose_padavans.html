@@ -1,0 +1,17 @@
+{% extends 'academy/base.html' %}
+{% block title %}Выберите падаванов из списка кандидатов{% endblock %}
+{% block article %}
+
+
+<h2>Кандидаты на Вашей планете</h2>
+{% for candidate in object_list %}
+    <div>
+        <p>
+        <b>{{ candidate.name }}</b>
+        <button><a href="/planet/{{ candidate.planet_id }}/candidates/{{ candidate.pk }}/">Подробнее</a></button>
+        </p>
+    </div>
+
+{% endfor %}
+
+{% endblock %}
